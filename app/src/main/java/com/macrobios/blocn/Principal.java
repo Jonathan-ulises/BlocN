@@ -7,6 +7,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -29,5 +31,7 @@ public class Principal extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
     }
 }
