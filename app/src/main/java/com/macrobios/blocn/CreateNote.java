@@ -88,6 +88,7 @@ public class CreateNote extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
+        createNoteViewModel.insertNote(getContext(), etTitle.getText().toString(), etNote.getText().toString());
         Toast.makeText(getContext(), "SAVE NOTE", Toast.LENGTH_SHORT).show();
     }
 }
