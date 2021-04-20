@@ -1,20 +1,26 @@
 package com.macrobios.blocn;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.macrobios.blocn.viewModel.CreateNoteViewModel.CreateNoteViewModel;
 
 public class CreateNote extends Fragment {
@@ -44,12 +50,35 @@ public class CreateNote extends Fragment {
 
        tvChCount.setText(Integer.toString(createNoteViewModel.getNumCharacter()) + "/255");
 
-       etNote.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+       etNote.addTextChangedListener(new TextWatcher() {
            @Override
-           public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-               Log.i("ACTION", Integer.toString(event.getAction()));
-               return true;
+           public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+           }
+
+           @Override
+           public void onTextChanged(CharSequence s, int start, int before, int count) {
+               if(s.length() <= 255){
+                   createNoteViewModel.addCharacter(s.length());
+                   tvChCount.setText(Integer.toString(createNoteViewModel.getNumCharacter()) + "/255");
+
+               }else{
+                   etNote.setText(etNote.getText().toString().substring(0, 255));
+                   hideKeyboar(getActivity(), view);
+                   Snackbar.make(view, "Just can type 255 characters", Snackbar.LENGTH_LONG).show();
+               }
+           }
+
+           @Override
+           public void afterTextChanged(Editable s) {
+
            }
        });
+    }
+
+    private void hideKeyboar(Activity act, View v){
+        InputMethodManager imm =
+                (InputMethodManager) act.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
     }
 }
