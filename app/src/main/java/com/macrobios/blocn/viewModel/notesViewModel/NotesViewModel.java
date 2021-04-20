@@ -17,6 +17,11 @@ public class NotesViewModel extends ViewModel {
 
     private List<Note> listNotes;
 
+    /**
+     * Method to get a List Notes
+     * @param ctx Execution Context
+     * @return List of Notes
+     */
     public List<Note> getListNotes(Context ctx){
         List<Note> mNotesList = new ArrayList<>();
 

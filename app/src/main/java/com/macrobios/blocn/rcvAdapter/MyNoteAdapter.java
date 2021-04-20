@@ -39,16 +39,7 @@ public class MyNoteAdapter extends RecyclerView.Adapter<MyNoteAdapter.ViewHolder
         holder.mItem = mNoteList.get(position);
         holder.tvTitle.setText(holder.mItem.getTitle());
         holder.tvNote.setText(holder.mItem.getNoteBody());
-        /*
-        holder.imgbtnEdit.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Toast.makeText(holder.mView.getContext(), "Click UwU", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
 
-         */
     }
 
     @Override
@@ -92,6 +83,11 @@ public class MyNoteAdapter extends RecyclerView.Adapter<MyNoteAdapter.ViewHolder
             });
         }
 
+        /**
+         * Method to create a Alert Dialog
+         * @param v Execution context view
+         * @return AlertDialogBuilder
+         */
         public AlertDialog.Builder createDialog(View v){
             AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
             builder.setTitle("Delete");

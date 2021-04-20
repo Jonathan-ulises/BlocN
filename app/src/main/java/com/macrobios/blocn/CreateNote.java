@@ -77,6 +77,11 @@ public class CreateNote extends Fragment implements View.OnClickListener{
 
     }
 
+    /**
+     * Method to hide the keyboard
+     * @param act Execution Activity
+     * @param v Execution View
+     */
     private void hideKeyboar(Activity act, View v){
         InputMethodManager imm =
                 (InputMethodManager) act.getSystemService(Activity.INPUT_METHOD_SERVICE);
