@@ -8,7 +8,7 @@ public class CreateNoteViewModel extends ViewModel {
 
     public int getNumCharacter(){return numCharacter;}
 
-    public void addCharacter(){
-        numCharacter++;
+    public void addCharacter(int numCharacter){
+        this.numCharacter = numCharacter;
     }
 }
