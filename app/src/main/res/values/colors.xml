@@ -17,4 +17,6 @@
     <color name="s_dark">#c49000</color>
     <!-- Color de texto -->
     <color name="p_s_color_font">#000000</color>
+
+    <color name="color_note">#ADFFDF50</color>
 </resources>
