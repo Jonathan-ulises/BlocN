@@ -1,4 +1,4 @@
-package com.macrobios.blocn.viewModel.CreateNoteViewModel;
+package com.macrobios.blocn.viewModel.createNoteViewModel;
 
 import android.content.ContentValues;
 import android.content.Context;
