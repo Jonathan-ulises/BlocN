@@ -1,29 +1,28 @@
 package com.macrobios.blocn;
 
 import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.macrobios.blocn.viewModel.CreateNoteViewModel.CreateNoteViewModel;
 
-public class CreateNote extends Fragment {
+public class CreateNote extends Fragment implements View.OnClickListener{
 
     EditText etTitle;
     EditText etNote;
@@ -37,6 +36,8 @@ public class CreateNote extends Fragment {
             Bundle savedInstanceState
     ) {
         createNoteViewModel = new ViewModelProvider(this).get(CreateNoteViewModel.class);
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_create_note, container, false);
     }
@@ -44,13 +45,15 @@ public class CreateNote extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-       etTitle = view.findViewById(R.id.etTitle);
-       etNote = view.findViewById(R.id.etNote);
-       tvChCount = view.findViewById(R.id.tvChCount);
+        Principal.fab.setOnClickListener(this);
+        Principal.fab.setImageResource(R.drawable.outline_save_24);
+        etTitle = view.findViewById(R.id.etTitle);
+        etNote = view.findViewById(R.id.etNote);
+        tvChCount = view.findViewById(R.id.tvChCount);
 
-       tvChCount.setText(Integer.toString(createNoteViewModel.getNumCharacter()) + "/255");
+        tvChCount.setText(Integer.toString(createNoteViewModel.getNumCharacter()) + "/255");
 
-       etNote.addTextChangedListener(new TextWatcher() {
+        etNote.addTextChangedListener(new TextWatcher() {
            @Override
            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -74,11 +77,17 @@ public class CreateNote extends Fragment {
 
            }
        });
+
     }
 
     private void hideKeyboar(Activity act, View v){
         InputMethodManager imm =
                 (InputMethodManager) act.getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+    }
+
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(getContext(), "SAVE NOTE", Toast.LENGTH_SHORT).show();
     }
 }
