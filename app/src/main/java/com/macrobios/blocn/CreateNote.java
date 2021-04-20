@@ -1,8 +1,6 @@
 package com.macrobios.blocn;
 
 import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,13 +12,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.macrobios.blocn.viewModel.CreateNoteViewModel.CreateNoteViewModel;
+import com.macrobios.blocn.viewModel.createNoteViewModel.CreateNoteViewModel;
 
 public class CreateNote extends Fragment implements View.OnClickListener{
 
