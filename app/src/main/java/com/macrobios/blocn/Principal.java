@@ -15,10 +15,10 @@ import android.view.View;
 import android.widget.Toast;
 
 
-public class Principal extends AppCompatActivity {
+public class Principal extends AppCompatActivity implements View.OnClickListener{
 
     NavController navController;
-    FloatingActionButton fab;
+    static FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,18 +31,16 @@ public class Principal extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController);
 
         fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navController.navigate(R.id.action_FirstFragment_to_SecondFragment);
-                fab.hide();
-            }
-        });
     }
 
     @Override
     public boolean onSupportNavigateUp() {
         navController.navigateUp();
         return super.onSupportNavigateUp();
+    }
+
+    @Override
+    public void onClick(View v) {
+        navController.navigate(R.id.action_FirstFragment_to_SecondFragment);
     }
 }
