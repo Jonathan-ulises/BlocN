@@ -40,6 +40,7 @@ public class Notes extends Fragment implements View.OnClickListener{
         navController = Navigation.findNavController(view);
 
         Principal.fab.setOnClickListener(this::onClick);
+        Principal.fab.setImageResource(R.drawable.outline_add_24);
 
         rcvNotes = view.findViewById(R.id.rcvNotes);
         rcvNotes.setLayoutManager(new GridLayoutManager(getActivity(), 2));
