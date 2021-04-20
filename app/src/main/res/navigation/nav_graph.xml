@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.macrobios.blocn.FirstFragment"
+        android:name="com.macrobios.blocn.Notes"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_note">
 
@@ -17,9 +17,9 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.macrobios.blocn.SecondFragment"
+        android:name="com.macrobios.blocn.CreateNote"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_new_note">
+        tools:layout="@layout/fragment_create_note">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"

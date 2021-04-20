@@ -17,7 +17,8 @@ import android.widget.Toast;
 
 public class Principal extends AppCompatActivity {
 
-NavController navController;
+    NavController navController;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +30,12 @@ NavController navController;
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 navController.navigate(R.id.action_FirstFragment_to_SecondFragment);
+                fab.hide();
             }
         });
     }

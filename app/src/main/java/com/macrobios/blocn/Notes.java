@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-public class FirstFragment extends Fragment {
+public class Notes extends Fragment {
 
     @Override
     public View onCreateView(
