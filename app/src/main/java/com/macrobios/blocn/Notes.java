@@ -14,8 +14,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.macrobios.blocn.model.Note;
 import com.macrobios.blocn.rcvAdapter.MyNoteAdapter;
 import com.macrobios.blocn.viewModel.notesViewModel.NotesViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Notes extends Fragment implements View.OnClickListener{
 
@@ -23,6 +27,7 @@ public class Notes extends Fragment implements View.OnClickListener{
     RecyclerView rcvNotes;
     MyNoteAdapter adapterNotes;
     NotesViewModel notesViewModel;
+    List<Note> mListN = new ArrayList<>();
 
     @Override
     public View onCreateView(
@@ -30,6 +35,7 @@ public class Notes extends Fragment implements View.OnClickListener{
             Bundle savedInstanceState
     ) {
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
+        mListN = notesViewModel.getListNotes(getContext());
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_note, container, false);
     }
@@ -44,7 +50,7 @@ public class Notes extends Fragment implements View.OnClickListener{
 
         rcvNotes = view.findViewById(R.id.rcvNotes);
         rcvNotes.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        adapterNotes = new MyNoteAdapter(notesViewModel.getListNotes(getContext()));
+        adapterNotes = new MyNoteAdapter(mListN, notesViewModel);
         rcvNotes.setAdapter(adapterNotes);
     }
 

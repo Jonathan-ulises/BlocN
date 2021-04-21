@@ -52,4 +52,6 @@ public class CreateNoteViewModel extends ViewModel {
             Toast.makeText(ctx, "You can´t create empty notes", Toast.LENGTH_SHORT).show();
         }
     }
+
+
 }

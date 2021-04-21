@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 
 import com.macrobios.blocn.db.AdminSQLiteOpenHelper;
@@ -34,6 +35,7 @@ public class NotesViewModel extends ViewModel {
         if(fila.moveToFirst()){
             while(fila.moveToNext()){
                 Note objN = new Note();
+                objN.setId(fila.getInt(fila.getColumnIndex("id")));
                 objN.setTitle(fila.getString(fila.getColumnIndex("title")));
                 objN.setNoteBody(fila.getString(fila.getColumnIndex("note")));
                 mNotesList.add(objN);
@@ -45,5 +47,25 @@ public class NotesViewModel extends ViewModel {
         }
 
         return mNotesList;
+    }
+
+    public void updateNote(
+            @NonNull Context ctx, @NonNull String tl,
+            @NonNull String nt, @NonNull int id){
+
+    }
+
+    public void deleteNote(@NonNull Context ctx, @NonNull int id){
+        AdminSQLiteOpenHelper admin =
+                new AdminSQLiteOpenHelper(ctx, "BlocNDB", null, 1);
+
+        SQLiteDatabase baseDatos = admin.getWritableDatabase();
+
+        /*
+        El metodo delete retorna la cantidad de registros eliminados
+         */
+        int cantidad = baseDatos.delete("notes", "id = " + id,null);
+        baseDatos.close();
+
     }
 }
